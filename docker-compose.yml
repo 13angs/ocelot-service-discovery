@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  consul-server1:
+    image: 13angs/consul:latest
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: consul-server1
+    restart: always
+
+    ports:
+      - "8500:8500"
+    
+    # /consul/config/server1.json exist in the container
+    command: "agent -bootstrap-expect=2 -config-file /consul/config/server1.json"
+
+    networks:
+      - osd-network
+
+  consul-server2:
+    image: 13angs/consul:latest
+    container_name: consul-server2
+    restart: always
+    
+    # /consul/config/server2.json exist in the container
+    command: "agent -bootstrap-expect=2 -config-file /consul/config/server2.json"
+
+    networks:
+      - osd-network
+    
+networks:
+  osd-network:
+    external: true
+    name: osd-network

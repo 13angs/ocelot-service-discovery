@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="13angs.Consul.Client" Version="0.0.1" />
+  </ItemGroup>
+
 </Project>

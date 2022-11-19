@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  osd-devcon:
+    image: mcr.microsoft.com/devcontainers/dotnet:0-6.0
+    container_name: osd-devcon
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ..:/workspaces/ocelot-service-discovery:cached
+    
+    command: sleep infinity
+
+    networks:
+      - osd-network
+      
+networks:
+  osd-network:
+    name: osd-network

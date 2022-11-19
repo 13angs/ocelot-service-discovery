@@ -1,22 +1,25 @@
 {
     "Routes": [
         {
-            "DownstreamPathTemplate": "/{naya}",
-            "DownstreamScheme": "https",
-            "DownstreamHostAndPorts": [
-            {
-                "Host": "www.facebook.com",
-                "Port": 443
-            }
-           ],
-            "UpstreamPathTemplate": "/{naya}",
-            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+            "DownstreamPathTemplate": "/todo/{naya}",
+            "DownstreamScheme": "http",
+            "ServiceName": "osd-todo",
+            "LoadBalancerOptions": {
+                "Type": "LeastConnection"
+            },
+            "UpstreamPathTemplate": "/todo/{naya}",
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete"
+            ]
         }
     ],
     "GlobalConfiguration": {
         "ServiceDiscoveryProvider": {
             "Scheme": "http",
-            "Host": "se-consul-server1",
+            "Host": "consul-server1",
             "Port": 8500,
             "Type": "Consul"
         }

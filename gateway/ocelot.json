@@ -1,0 +1,24 @@
+{
+    "Routes": [
+        {
+            "DownstreamPathTemplate": "/{naya}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+            {
+                "Host": "www.facebook.com",
+                "Port": 443
+            }
+           ],
+            "UpstreamPathTemplate": "/{naya}",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+        }
+    ],
+    "GlobalConfiguration": {
+        "ServiceDiscoveryProvider": {
+            "Scheme": "http",
+            "Host": "se-consul-server1",
+            "Port": 8500,
+            "Type": "Consul"
+        }
+    }
+}
